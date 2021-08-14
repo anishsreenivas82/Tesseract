@@ -89,7 +89,7 @@ class _AnimState extends State<Anim> {
                                 context,
                                 PageRouteBuilder(
                                   
-                                    pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
+                                    pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 1000)));
                               // Navigator.of(context).push(_createRoute());
                             },
                             icon: Icon(
