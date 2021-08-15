@@ -1,4 +1,4 @@
-import 'package:connectify/role.dart';
+// import 'package:connectify/role.dart';
 import 'package:connectify/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,6 @@ Sawo sawo = new Sawo(
 );
 
 class SignIn extends StatefulWidget {
-
   @override
   _SignInState createState() => _SignInState();
 }
@@ -73,12 +72,12 @@ class _SignInState extends State<SignIn> {
             Hero(
               tag: 'container',
               child: Container(
-                height: height * 0.44,
+                height: height * 0.30,
                 width: width,
                 color: Color(0xfff7f4b4),
                 child: Column(
                   children: [
-                    SizedBox(height: height * 0.09),
+                    SizedBox(height: height * 0.05),
                     Text(
                       'Connectify',
                       style: TextStyle(fontFamily: 'Satisfy', fontSize: 30),
@@ -100,74 +99,111 @@ class _SignInState extends State<SignIn> {
                             backgroundImage: AssetImage("assets/logo.png"),
                             backgroundColor: Color(0xfff7f4b4),
                           )),
-                    ),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     // Sawo sawo = new Sawo(
-                    //     //   apiKey: config["apiKey"],
-                    //     //   secretKey: config["secretKey"],
-                    //     // );
-                    //     sawo.signIn(
-                    //       context: context,
-                    //       identifierType: 'email',
-                    //       callback: payloadCallback,
-                    //     );
-                    //   },
-                    //   child: Text('Email Login'),
-                    // ),
-                    // ElevatedButton(
-                    //   onPressed: () {
-                    //     // Sawo sawo = new Sawo(
-                    //     //   apiKey: config["apiKey"],
-                    //     //   secretKey: config["secretKey"],
-                    //     // );
-                    //     sawo.signIn(
-                    //       context: context,
-                    //       identifierType: 'phone_number_sms',
-                    //       callback: payloadCallback,
-                    //     );
-                    //   },
-                    //   child: Text('Phone Login'),
-                    // ),
+                    )
                   ],
                 ),
               ),
             ),
-            // SizedBox(height: height*0.05,),
+            // SizedBox(
+            //   height: height * 0.05,
+            // ),
             Padding(
-                padding: EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                   width * 0.05, height * 0.05, width * 0.05, 0),
-              child: Column(
-              
-                children:  [ElevatedButton(
-                        onPressed: () {
-                          // Sawo sawo = new Sawo(
-                          //   apiKey: config["apiKey"],
-                          //   secretKey: config["secretKey"],
-                          // );
-                          sawo.signIn(
-                            context: context,
-                            identifierType: 'email',
-                            callback: payloadCallback,
-                          );
-                        },
-                        child: Text('Email Login'),
+              child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Sawo sawo = new Sawo(
-                          //   apiKey: config["apiKey"],
-                          //   secretKey: config["secretKey"],
-                          // );
-                          sawo.signIn(
-                            context: context,
-                            identifierType: 'phone_number_sms',
-                            callback: payloadCallback,
-                          );
-                        },
-                        child: Text('Phone Login'),
+                      child: Container(
+                          height: height * 0.35,
+                          width: width * 0.75,
+                          decoration: BoxDecoration(
+                            image: new DecorationImage(
+                              image: NetworkImage(
+                                  "https://images.unsplash.com/photo-1521790361543-f645cf042ec4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: height * 0.25),
+                              ElevatedButton.icon(
+                                  onPressed: () {
+                                    sawo.signIn(
+                                      context: context,
+                                      identifierType: 'email',
+                                      callback: payloadCallback,
+                                    );
+                                  },
+                                  icon: Icon(Icons.email),
+                                  label: Text(
+                                    'Email Login',
+                                    style: TextStyle(
+                                      fontFamily: 'Almendra',
+                                      color: Color(0xffd4fff7),
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xff171f28),
+                                  )),
+                            ],
+                          ))),
+                ),
+                SizedBox(
+                  width: width * 0.05,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      ]),
+                      child: Container(
+                          height: height * 0.35,
+                          width: width * 0.75,
+                          decoration: BoxDecoration(
+                            image: new DecorationImage(
+                              image: NetworkImage(
+                                  "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: height * 0.25),
+                              ElevatedButton.icon(
+                                onPressed: () {
+                                  sawo.signIn(
+                                    context: context,
+                                    identifierType: 'phone_number_sms',
+                                    callback: payloadCallback,
+                                  );
+                                },
+                                icon: Icon(Icons.phone),
+                                label: Text(
+                                  'Phone Login',
+                                  style: TextStyle(
+                                    fontFamily: 'Almendra',
+                                    color: Color(0xffd4fff7),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xff171f28),
+                                ),
+                              )
+                            ],
+                          ))),
+                ),
+              ]),
             ),
           ],
         ),
