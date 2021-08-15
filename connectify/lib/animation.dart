@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class Anim extends StatefulWidget {
-  const Anim({ Key? key }) : super(key: key);
+  
 
   @override
   _AnimState createState() => _AnimState();
@@ -28,9 +28,9 @@ class _AnimState extends State<Anim> {
         backgroundColor: Color(0xafc98bd2),
        body: SingleChildScrollView(
          child: Column(children: [
-          //  SizedBox(height:height*0.067),
+          SizedBox(height:height*0.067),
           
-           Center(child: Text('Connectify',style: TextStyle(fontFamily:'Satisfy',fontSize:40),)),
+          Center(child: Text('Connectify',style: TextStyle(fontFamily:'Satisfy',fontSize:40),)),
            
            Container(
              height: height*0.50,
@@ -55,25 +55,27 @@ class _AnimState extends State<Anim> {
                  
                ),
                child: Column(children: [
-                 SizedBox(height: height * 0.01),
+                 SizedBox(height: height * 0.04),
                         CircleAvatar(
                           backgroundColor: Colors.black,
-                          radius: 30, //border color
+                          radius: 35, //border color
                           child: Padding(
                             padding: const EdgeInsets.all(2.0), //border size
-                            child: CircleAvatar(
-                              radius: 27,
-                              backgroundImage: AssetImage("assets/logo.png"),
-                              backgroundColor: Color(0xfff7f4b4),
+                            child: Center(
+                              child: CircleAvatar(
+                                radius: 33,
+                                backgroundImage: AssetImage("assets/logo.png"),
+                                backgroundColor: Color(0xfff7f4b4),
                
-                        )),
                         ),
-                        SizedBox(height: height * 0.01),
+                            )),
+                        ),
+                        SizedBox(height: height * 0.03),
                         SizedBox(
-                          width: width*0.89,
+                          width: width*0.86,
                           height:height*0.10,
                           child: Text(
-                            "Connect seemlessly with Volunteers, donors and other Not-for-profit organizations and continue making the world a better place!",
+                            "Connect seamlessly with Volunteers,Donors and Not-for-profit organizations to continue making the world a better place!",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Almendra',
@@ -82,7 +84,7 @@ class _AnimState extends State<Anim> {
                             ),
                           ),
                         ),
-                        SizedBox(height: height * 0.01),
+                        // SizedBox(height: height * 0.005),
                         ElevatedButton.icon(
                             onPressed: () {
                              Navigator.push(
@@ -106,10 +108,13 @@ class _AnimState extends State<Anim> {
                                 color: Color(0xffd4fff7),
                                 fontSize: 15,
                               ),
-                            )),],),
-               ),
-             )],),
-       ),
+                            )
+                            ),
+                            ],),
+                            ),
+                    )
+                   ],),
+              ),
         
       ),
     );
