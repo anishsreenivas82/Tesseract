@@ -1,3 +1,4 @@
+import 'package:connectify/corp_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -103,11 +104,11 @@ class _RoleState extends State<Role> {
                                     SizedBox(height: height * 0.17),
                                     ElevatedButton.icon(
                                       onPressed: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //             WomenClothes()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CorpProfile()));
                                       },
                                       icon: Icon(Icons.next_plan,
                                           color: Color(0xffd4fff7)),
