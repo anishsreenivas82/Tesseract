@@ -11,7 +11,6 @@ Sawo sawo = new Sawo(
 );
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
 
   @override
   _SignInState createState() => _SignInState();
@@ -66,23 +65,6 @@ class _SignInState extends State<SignIn> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    // else{
-    //   icon = Icons.visibility_off;
-
-    // }
-
-//  void toggleview() {
-//   setState(() {
-//       _ishidden = !_ishidden;
-//     });
-
-// }
-
-    //  setState(() {
-    //    _currentOpacity=1.0;
-
-    // });
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFEFBE90),
@@ -119,139 +101,73 @@ class _SignInState extends State<SignIn> {
                             backgroundColor: Color(0xfff7f4b4),
                           )),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Sawo sawo = new Sawo(
-                        //   apiKey: config["apiKey"],
-                        //   secretKey: config["secretKey"],
-                        // );
-                        sawo.signIn(
-                          context: context,
-                          identifierType: 'email',
-                          callback: payloadCallback,
-                        );
-                      },
-                      child: Text('Email Login'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Sawo sawo = new Sawo(
-                        //   apiKey: config["apiKey"],
-                        //   secretKey: config["secretKey"],
-                        // );
-                        sawo.signIn(
-                          context: context,
-                          identifierType: 'phone_number_sms',
-                          callback: payloadCallback,
-                        );
-                      },
-                      child: Text('Phone Login'),
-                    ),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     // Sawo sawo = new Sawo(
+                    //     //   apiKey: config["apiKey"],
+                    //     //   secretKey: config["secretKey"],
+                    //     // );
+                    //     sawo.signIn(
+                    //       context: context,
+                    //       identifierType: 'email',
+                    //       callback: payloadCallback,
+                    //     );
+                    //   },
+                    //   child: Text('Email Login'),
+                    // ),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     // Sawo sawo = new Sawo(
+                    //     //   apiKey: config["apiKey"],
+                    //     //   secretKey: config["secretKey"],
+                    //     // );
+                    //     sawo.signIn(
+                    //       context: context,
+                    //       identifierType: 'phone_number_sms',
+                    //       callback: payloadCallback,
+                    //     );
+                    //   },
+                    //   child: Text('Phone Login'),
+                    // ),
                   ],
                 ),
               ),
             ),
             // SizedBox(height: height*0.05,),
             Padding(
-              padding: EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   width * 0.05, height * 0.05, width * 0.05, 0),
-              child: TextFormField(
-                  decoration: InputDecoration(
-                labelText: 'Email-Id',
-                fillColor: Colors.white,
-                icon: Icon(Icons.email),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.amber,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(20)),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.brown, width: 2)),
-              )),
-            ),
-
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                  width * 0.05, height * 0.05, width * 0.05, height * 0.01),
-              child: TextFormField(
-                  obscureText: _ishidden,
-                  decoration: InputDecoration(
-                    suffix: InkWell(
-                        child: Icon(_ishidden
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onTap: () {
-                          setState(() {
-                            _ishidden = !_ishidden;
-                          });
-                        }),
-                    labelText: 'Password',
-                    fillColor: Colors.white,
-                    icon: Icon(Icons.password),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.amber,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.brown, width: 2)),
-                  )),
-            ),
-
-            Center(
-              child: Container(
-                width: width * 0.3,
-                child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder: (context, _, a) => SignIn(),
-                              transitionDuration: Duration(milliseconds: 500)));
-                      // Navigator.of(context).push(_createRoute());
-                    },
-                    icon: Icon(
-                      Icons.next_plan,
-                      color: Color(0xffd4fff7),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xff171f28),
-                    ),
-                    label: Text(
-                      "Sign In",
-                      style: TextStyle(
-                        fontFamily: 'Almendra',
-                        color: Color(0xffd4fff7),
-                        fontSize: 15,
+              child: Column(
+              
+                children:  [ElevatedButton(
+                        onPressed: () {
+                          // Sawo sawo = new Sawo(
+                          //   apiKey: config["apiKey"],
+                          //   secretKey: config["secretKey"],
+                          // );
+                          sawo.signIn(
+                            context: context,
+                            identifierType: 'email',
+                            callback: payloadCallback,
+                          );
+                        },
+                        child: Text('Email Login'),
                       ),
-                    )),
-              ),
-            ),
-            SizedBox(height: height * 0.05),
-            Text(
-              "Dont have an Account?",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black, fontSize: 15, fontFamily: 'Almendra'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Role()));
-              },
-              child: Text(
-                "Sign Up",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontFamily: 'Almendra',
-                    decoration: TextDecoration.underline),
-              ),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Sawo sawo = new Sawo(
+                          //   apiKey: config["apiKey"],
+                          //   secretKey: config["secretKey"],
+                          // );
+                          sawo.signIn(
+                            context: context,
+                            identifierType: 'phone_number_sms',
+                            callback: payloadCallback,
+                          );
+                        },
+                        child: Text('Phone Login'),
+                      ),
+                      ]),
             ),
           ],
         ),
