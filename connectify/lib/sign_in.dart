@@ -1,4 +1,5 @@
 // import 'package:connectify/role.dart';
+import 'package:connectify/role.dart';
 import 'package:connectify/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,6 +65,15 @@ class _SignInState extends State<SignIn> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
+    if (user != "") {
+      Future.delayed(Duration.zero, () {
+        Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, _, a) => Role(),
+            ));
+      });
+    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFEFBE90),
@@ -186,6 +196,7 @@ class _SignInState extends State<SignIn> {
                                     identifierType: 'phone_number_sms',
                                     callback: payloadCallback,
                                   );
+                                  print(user);
                                 },
                                 icon: Icon(Icons.phone),
                                 label: Text(

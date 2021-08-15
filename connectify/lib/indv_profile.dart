@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class IndvProfile extends StatefulWidget {
-  const IndvProfile({Key? key}) : super(key: key);
+class CreatorProfile extends StatefulWidget {
+  const CreatorProfile({Key? key}) : super(key: key);
 
   @override
-  _IndvProfileState createState() => _IndvProfileState();
+  _CreatorProfileState createState() => _CreatorProfileState();
 }
 
-class _IndvProfileState extends State<IndvProfile> {
+class _CreatorProfileState extends State<CreatorProfile> {
   static final List<String> items = <String>[
     "Choose a city",
     "Achalpur",
