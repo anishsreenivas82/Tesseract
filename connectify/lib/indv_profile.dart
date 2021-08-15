@@ -1315,7 +1315,6 @@ class _IndvProfileState extends State<IndvProfile> {
                                 style: TextStyle(
                                   color: Colors.brown,
                                   fontSize: 15,
-                                  
                                 ),
                               ),
                               value: item,
@@ -1327,36 +1326,38 @@ class _IndvProfileState extends State<IndvProfile> {
                   ),
                 ),
               ),
-              SizedBox(height: height*0.05,),
+              SizedBox(
+                height: height * 0.05,
+              ),
               Center(
-               child: Container(
-                 width: width*0.3,
-                 child: ElevatedButton.icon(
-                                onPressed: () {
-                                //  Navigator.push(
-                                //     context,
-                                //     PageRouteBuilder(
-                                      
-                                //         pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
-                                  // Navigator.of(context).push(_createRoute());
-                                },
-                                icon: Icon(
-                                  Icons.next_plan,
-                                  color: Color(0xffd4fff7),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xff171f28),
-                                ),
-                                label: Text(
-                                  "Continue",
-                                  style: TextStyle(
-                                    fontFamily: 'Almendra',
-                                    color: Color(0xffd4fff7),
-                                    fontSize: 15,
-                                  ),
-                                )),
-               ),
-             ),
+                child: Container(
+                  width: width * 0.31,
+                  child: ElevatedButton.icon(
+                      onPressed: () {
+                        //  Navigator.push(
+                        //     context,
+                        //     PageRouteBuilder(
+
+                        //         pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
+                        // Navigator.of(context).push(_createRoute());
+                      },
+                      icon: Icon(
+                        Icons.next_plan,
+                        color: Color(0xffd4fff7),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xff171f28),
+                      ),
+                      label: Text(
+                        "Continue",
+                        style: TextStyle(
+                          fontFamily: 'Almendra',
+                          color: Color(0xffd4fff7),
+                          fontSize: 15,
+                        ),
+                      )),
+                ),
+              ),
             ],
           ),
         ),

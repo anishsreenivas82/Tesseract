@@ -30,7 +30,6 @@ class _SignInState extends State<SignIn> {
           const begin = Offset(0.0, 1.0);
           const end = Offset.zero;
           const curve = Curves.ease;
-          
 
           var tween =
               Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
@@ -38,7 +37,6 @@ class _SignInState extends State<SignIn> {
           return SlideTransition(
             position: animation.drive(tween),
             child: child,
-            
           );
         },
       );
@@ -73,8 +71,7 @@ class _SignInState extends State<SignIn> {
               tag: 'container',
               child: Container(
                 height: height * 0.44,
-                width: width, 
-                
+                width: width,
                 color: Color(0xfff7f4b4),
                 child: Column(
                   children: [
@@ -156,59 +153,57 @@ class _SignInState extends State<SignIn> {
                   )),
             ),
 
-             Center(
-               child: Container(
-                 width: width*0.3,
-                 child: ElevatedButton.icon(
-                                onPressed: () {
-                                 Navigator.push(
-                                    context,
-                                    PageRouteBuilder(
-                                      
-                                        pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
-                                  // Navigator.of(context).push(_createRoute());
-                                },
-                                icon: Icon(
-                                  Icons.next_plan,
-                                  color: Color(0xffd4fff7),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xff171f28),
-                                ),
-                                label: Text(
-                                  "Sign In",
-                                  style: TextStyle(
-                                    fontFamily: 'Almendra',
-                                    color: Color(0xffd4fff7),
-                                    fontSize: 15,
-                                  ),
-                                )),
-               ),
-             ),
-                            SizedBox(height: height * 0.05),
-                    Text(
-                      "Dont have an Account?",
-                      textAlign: TextAlign.center,
+            Center(
+              child: Container(
+                width: width * 0.3,
+                child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (context, _, a) => SignIn(),
+                              transitionDuration: Duration(milliseconds: 500)));
+                      // Navigator.of(context).push(_createRoute());
+                    },
+                    icon: Icon(
+                      Icons.next_plan,
+                      color: Color(0xffd4fff7),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff171f28),
+                    ),
+                    label: Text(
+                      "Sign In",
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontFamily: 'Almendra'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Role()));
-                      },
-                      child: Text(
-                        "Sign Up",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontFamily: 'Almendra',
-                            decoration: TextDecoration.underline),
+                        fontFamily: 'Almendra',
+                        color: Color(0xffd4fff7),
+                        fontSize: 15,
                       ),
-                    ),
+                    )),
+              ),
+            ),
+            SizedBox(height: height * 0.05),
+            Text(
+              "Dont have an Account?",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black, fontSize: 15, fontFamily: 'Almendra'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Role()));
+              },
+              child: Text(
+                "Sign Up",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    fontFamily: 'Almendra',
+                    decoration: TextDecoration.underline),
+              ),
+            ),
           ],
         ),
       ),
