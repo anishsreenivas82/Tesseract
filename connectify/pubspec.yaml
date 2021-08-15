@@ -23,13 +23,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sawo: ^0.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   lottie: ^1.1.0
-  sawo: ^0.1.0
+  
   image_picker: ^0.8.3+2
   firebase_storage: ^10.0.1
   permission_handler: ^8.1.4+2
