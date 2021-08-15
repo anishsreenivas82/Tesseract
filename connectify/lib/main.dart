@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'animation.dart';
 
 void main() {
-
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
@@ -11,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-  const Home({ Key? key }) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -34,3 +32,4 @@ class _HomeState extends State<Home> {
     return Anim();
   }
 }
+//devsoc is awesome
