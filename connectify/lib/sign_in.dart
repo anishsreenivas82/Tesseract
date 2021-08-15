@@ -2,8 +2,13 @@ import 'package:connectify/role.dart';
 import 'package:connectify/sign_up.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sawo/sawo.dart';
 
 bool _ishidden = true;
+Sawo sawo = new Sawo(
+  apiKey: '0cd131c0-de41-48f7-8f3d-0e5091c81aac',
+  secretKey: '611913b82f5bde7b00072f24K0O6VNLoWECtisC1RNFiyu20',
+);
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -19,6 +24,22 @@ class _SignInState extends State<SignIn> {
 
     _ishidden = true;
   }
+
+  var config = {};
+  // user payload
+  String user = "";
+  void payloadCallback(context, payload) {
+    if (payload == null || (payload is String && payload.length == 0)) {
+      payload = "Login Failed :(";
+    }
+    setState(() {
+      user = payload;
+    });
+  }
+
+  void toogleState(typedata, text) => setState(() {
+        config[typedata] = text;
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +118,34 @@ class _SignInState extends State<SignIn> {
                             backgroundImage: AssetImage("assets/logo.png"),
                             backgroundColor: Color(0xfff7f4b4),
                           )),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Sawo sawo = new Sawo(
+                        //   apiKey: config["apiKey"],
+                        //   secretKey: config["secretKey"],
+                        // );
+                        sawo.signIn(
+                          context: context,
+                          identifierType: 'email',
+                          callback: payloadCallback,
+                        );
+                      },
+                      child: Text('Email Login'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Sawo sawo = new Sawo(
+                        //   apiKey: config["apiKey"],
+                        //   secretKey: config["secretKey"],
+                        // );
+                        sawo.signIn(
+                          context: context,
+                          identifierType: 'phone_number_sms',
+                          callback: payloadCallback,
+                        );
+                      },
+                      child: Text('Phone Login'),
                     ),
                   ],
                 ),
