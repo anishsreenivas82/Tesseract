@@ -1,3 +1,4 @@
+import 'package:connectify/my_feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -1195,6 +1196,25 @@ class _CorpProfileState extends State<CorpProfile> {
   String value = items.first;
   @override
   Widget build(BuildContext context) {
+    Route _createRoute() {
+      return PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 1500),
+        pageBuilder: (context, animation, secondaryAnimation) => const Feed(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+      );
+    }
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -1334,12 +1354,12 @@ class _CorpProfileState extends State<CorpProfile> {
                     width: width * 0.31,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                        //  Navigator.push(
-                        //     context,
-                        //     PageRouteBuilder(
+                         Navigator.push(
+                            context,
+                            PageRouteBuilder(
 
-                        //         pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
-                        // Navigator.of(context).push(_createRoute());
+                                pageBuilder: (context,_,a) => Feed(),transitionDuration: Duration(milliseconds: 500)));
+                        Navigator.of(context).push(_createRoute());
                       },
                       icon: Icon(
                         Icons.next_plan,
