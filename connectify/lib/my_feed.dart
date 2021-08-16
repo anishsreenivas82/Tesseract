@@ -1,3 +1,4 @@
+import 'package:connectify/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,6 +16,7 @@ class _FeedState extends State<Feed> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Color(0xFFEFBE90),
+      drawer: NavBar(),
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
@@ -60,113 +62,125 @@ class _FeedState extends State<Feed> {
             ),
           ];
         },
-        body: ListView(
-          children: [
-            Center(
-              child: Padding(
-                padding:  EdgeInsets.fromLTRB(width*0.009, height*0.01,width*0.009 , 0),
-                child: Card(
-                  elevation: 20,
-                  child: Container(
-                    width: width*0.85,
-                    height: height*0.62,
-                    child: Column(
-                        children:[
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Align(alignment:Alignment.topLeft,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.black,
-                                  radius: 30,
-                                ),),
+        body: ListView(children: [
+          Center(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  width * 0.009, height * 0.01, width * 0.009, 0),
+              child: Card(
+                elevation: 20,
+                child: Container(
+                  width: width * 0.85,
+                  height: height * 0.62,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.black,
+                                radius: 30,
                               ),
-                              SizedBox(width: width*0.05,),
-                              
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Text('Name of User', style: TextStyle(
-                                    fontSize: 25,
-                                    fontFamily: 'Almendra',
-                                    fontWeight: FontWeight.bold
-                                  )),
-                                ),
-                              ),],
-
+                            ),
                           ),
-                              SizedBox(height: height*0.005,),
-                               
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Title', style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: 'Almendra',
-                                    fontWeight: FontWeight.w300,
-                                    fontStyle: FontStyle.italic
-                                  )),
-                                ),
-                              ),
-                              SizedBox(height: height*0.005,),
-                               Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: height*0.35,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Text Input', style: TextStyle(
-                                      fontSize: 15,
+                          SizedBox(
+                            width: width * 0.05,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: Text('Name of User',
+                                  style: TextStyle(
+                                      fontSize: 25,
                                       fontFamily: 'Almendra',
-                                      fontWeight: FontWeight.w100,
-                                      
-                                    )),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: height*0.005,),
-                              Row(children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite)),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.auto_awesome), label:Text('Collaborate', style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'Almendra',
-                                        fontWeight: FontWeight.w100,
-                                        
-                                      )),),
-                                ),
-                                 Padding(
-                                   padding: const EdgeInsets.all(8.0),
-                                   child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.add), label:Text('Up for \nit!', style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'Almendra',
-                                        fontWeight: FontWeight.w100,
-                                        
-                                      )),),
-                                 )
-                              
-                              ],)
-
-                            
-                         
-                                  
-                              ],
+                                      fontWeight: FontWeight.bold)),
+                            ),
                           ),
+                        ],
                       ),
+                      SizedBox(
+                        height: height * 0.005,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text('Title',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Almendra',
+                                  fontWeight: FontWeight.w300,
+                                  fontStyle: FontStyle.italic)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.005,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: height * 0.25,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text('Text Input',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Almendra',
+                                  fontWeight: FontWeight.w100,
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.005,
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(width * 0.009),
+                            child: IconButton(
+                                onPressed: () {}, icon: Icon(Icons.favorite)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(width * 0.009),
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              icon: Icon(Icons.auto_awesome),
+                              label: Text('Collaborate',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Almendra',
+                                    fontWeight: FontWeight.w100,
+                                  )),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(width * 0.002),
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              icon: Icon(Icons.add),
+                              label: Text('Up for \nit!',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'Almendra',
+                                    fontWeight: FontWeight.w100,
+                                  )),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                       
-                    ),
                 ),
-           ] ),
               ),
-            );
-         
+            ),
+          ),
+        ]),
+      ),
+    );
   }
 }
