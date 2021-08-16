@@ -5,6 +5,7 @@ import 'animation.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(MyApp());
 }
 
@@ -28,23 +29,21 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       // Initialize FlutterFire:
-      future: _initialization,
+      future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         // Check for errors
-        if (snapshot.hasError) {
-          print("Error!!!");
-          // return Home();
-        }
-
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return Anim();
         }
+        if (snapshot.hasError) {
+          print("Error!!!");
+        }
+
+        // Once complete, show your application
 
         // Otherwise, show something whilst waiting for initialization to complete
         return CircularProgressIndicator.adaptive();

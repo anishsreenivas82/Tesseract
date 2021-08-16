@@ -1,7 +1,5 @@
 import 'package:connectify/corp_profile.dart';
 import 'package:connectify/indv_profile.dart';
-import 'package:connectify/ngo.dart';
-import 'package:connectify/volunteer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
