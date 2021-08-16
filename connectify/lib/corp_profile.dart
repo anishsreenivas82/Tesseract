@@ -1,6 +1,8 @@
 import 'package:connectify/my_feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+final name_business = TextEditingController();
+final address= TextEditingController();
 
 class CorpProfile extends StatefulWidget {
   const CorpProfile({Key? key}) : super(key: key);
@@ -1197,8 +1199,7 @@ class _CorpProfileState extends State<CorpProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final name_business = TextEditingController();
-    final address= TextEditingController();
+
     
     
 
