@@ -1,6 +1,9 @@
-// import 'package:connectify/role.dart';
+import 'package:connectify/animation.dart';
+import 'package:connectify/my_feed.dart';
 import 'package:connectify/role.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectify/sign_up.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sawo/sawo.dart';
@@ -25,6 +28,7 @@ class _SignInState extends State<SignIn> {
   }
 
   var config = {};
+  String _list = "", uid = "";
   // user payload
   String user = "";
   void payloadCallback(context, payload) {
@@ -33,6 +37,9 @@ class _SignInState extends State<SignIn> {
     }
     setState(() {
       user = payload;
+      _list = user.substring(107);
+      int x = _list.indexOf("\"");
+      user = _list.substring(0, x);
     });
   }
 
@@ -66,12 +73,31 @@ class _SignInState extends State<SignIn> {
     double width = MediaQuery.of(context).size.width;
 
     if (user != "") {
-      Future.delayed(Duration.zero, () {
-        Navigator.push(
-            context,
-            PageRouteBuilder(
-              pageBuilder: (context, _, a) => Role(),
-            ));
+      print(user);
+      FirebaseFirestore.instance
+          .collection('Users')
+          .doc(user)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          Navigator.push(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, _, a) =>
+                    Feed(), //Put nav to direct page here with if condition
+              ));
+        } else {
+          FirebaseFirestore.instance
+              .collection('Users')
+              .doc(user)
+              .set({'user': user});
+
+          Navigator.push(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, _, a) => Role(),
+              ));
+        }
       });
     }
     return SafeArea(
