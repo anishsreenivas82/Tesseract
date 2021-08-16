@@ -1,4 +1,4 @@
-# Connectify-
+# Connectify- Submission for DevFest 2.0 under Qoohoo Track
 ## About
 This app helps connect Creators, Businness and prospective investors. In this day and age driven by the creator economy, our app helps bridge this gap between them.
 ## Features
