@@ -1194,8 +1194,14 @@ class _CorpProfileState extends State<CorpProfile> {
     "Zunheboto",
   ];
   String value = items.first;
+
   @override
   Widget build(BuildContext context) {
+    final name_business = TextEditingController();
+    final address= TextEditingController();
+    
+    
+
     Route _createRoute() {
       return PageRouteBuilder(
         transitionDuration: Duration(milliseconds: 1500),
@@ -1284,7 +1290,9 @@ class _CorpProfileState extends State<CorpProfile> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
+                      
                   child: TextFormField(
+                      controller: name_business,
                       decoration: InputDecoration(
                     labelText: 'Name of the firm',
                     fillColor: Colors.white,
@@ -1304,6 +1312,7 @@ class _CorpProfileState extends State<CorpProfile> {
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
+                     controller: address,
                       decoration: InputDecoration(
                     labelText: 'Address',
                     fillColor: Colors.white,
