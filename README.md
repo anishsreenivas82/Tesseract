@@ -1,7 +1,7 @@
 # Connectify-
 ## About
 This app helps connect Creators, Businness and prospective investors. In this day and age driven by the creator economy, our app helps bridge this gap between them.
-##Features
+## Features
 The app allows creators to post their calls for any requirements they have- ranging from seeking services from businesses that help improve their content online to a feature where they can recive collaboration requests from the fellow creators. 
 From the point of view of a business, they would have the ability for posting announcements regarding influencer marketing requests that would be visible to all the creators on the platform. 
 ## What problem does our app solve?
