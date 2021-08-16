@@ -1,8 +1,6 @@
 import 'package:connectify/my_feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-final name_business = TextEditingController();
-final address= TextEditingController();
 
 class CorpProfile extends StatefulWidget {
   const CorpProfile({Key? key}) : super(key: key);
@@ -1196,13 +1194,8 @@ class _CorpProfileState extends State<CorpProfile> {
     "Zunheboto",
   ];
   String value = items.first;
-
   @override
   Widget build(BuildContext context) {
-
-    
-    
-
     Route _createRoute() {
       return PageRouteBuilder(
         transitionDuration: Duration(milliseconds: 1500),
@@ -1222,6 +1215,7 @@ class _CorpProfileState extends State<CorpProfile> {
         },
       );
     }
+
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -1291,9 +1285,7 @@ class _CorpProfileState extends State<CorpProfile> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
-                      
                   child: TextFormField(
-                      controller: name_business,
                       decoration: InputDecoration(
                     labelText: 'Name of the firm',
                     fillColor: Colors.white,
@@ -1313,7 +1305,6 @@ class _CorpProfileState extends State<CorpProfile> {
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
-                     controller: address,
                       decoration: InputDecoration(
                     labelText: 'Address',
                     fillColor: Colors.white,
@@ -1333,27 +1324,25 @@ class _CorpProfileState extends State<CorpProfile> {
                   height: height * 0.05,
                 ),
                 Center(
-                  child: Flexible(
-                    child: DropdownButton<String>(
-                      iconEnabledColor: Colors.brown,
-                      dropdownColor: Color(0xfff7f4b4),
-                      value: value,
-                      items: items
-                          .map((item) => DropdownMenuItem<String>(
-                                child: Text(
-                                  item,
-                                  style: TextStyle(
-                                    color: Colors.brown,
-                                    fontSize: 15,
-                                  ),
+                  child: DropdownButton<String>(
+                    iconEnabledColor: Colors.brown,
+                    dropdownColor: Color(0xfff7f4b4),
+                    value: value,
+                    items: items
+                        .map((item) => DropdownMenuItem<String>(
+                              child: Text(
+                                item,
+                                style: TextStyle(
+                                  color: Colors.brown,
+                                  fontSize: 15,
                                 ),
-                                value: item,
-                              ))
-                          .toList(),
-                      onChanged: (value) => setState(() {
-                        this.value = value!;
-                      }),
-                    ),
+                              ),
+                              value: item,
+                            ))
+                        .toList(),
+                    onChanged: (value) => setState(() {
+                      this.value = value!;
+                    }),
                   ),
                 ),
                 SizedBox(
@@ -1364,11 +1353,12 @@ class _CorpProfileState extends State<CorpProfile> {
                     width: width * 0.31,
                     child: ElevatedButton.icon(
                       onPressed: () {
-                         Navigator.push(
+                        Navigator.push(
                             context,
                             PageRouteBuilder(
-
-                                pageBuilder: (context,_,a) => Feed(),transitionDuration: Duration(milliseconds: 500)));
+                                pageBuilder: (context, _, a) => Feed(),
+                                transitionDuration:
+                                    Duration(milliseconds: 500)));
                         Navigator.of(context).push(_createRoute());
                       },
                       icon: Icon(

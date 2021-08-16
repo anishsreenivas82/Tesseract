@@ -73,7 +73,6 @@ class _SignInState extends State<SignIn> {
     double width = MediaQuery.of(context).size.width;
 
     if (user != "") {
-      print(user);
       FirebaseFirestore.instance
           .collection('Users')
           .doc(user)
@@ -84,7 +83,7 @@ class _SignInState extends State<SignIn> {
               context,
               PageRouteBuilder(
                 pageBuilder: (context, _, a) =>
-                    Feed(), //Put nav to direct page here with if condition
+                    Role(), //Put nav to direct page here with if condition
               ));
         } else {
           FirebaseFirestore.instance
