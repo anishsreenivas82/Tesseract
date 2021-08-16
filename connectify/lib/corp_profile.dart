@@ -1365,7 +1365,7 @@ class _CorpProfileState extends State<CorpProfile> {
                         FirebaseFirestore.instance
                             .collection('Users')
                             .doc(user)
-                            .set({
+                            .update({
                           'name': name.toString(),
                           'address': address.toString()
                         });

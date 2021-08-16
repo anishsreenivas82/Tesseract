@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectify/nav_bar.dart';
+import 'package:connectify/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -59,11 +61,7 @@ class _CreateNewState extends State<CreateNew> {
               Center(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(
-                    width * 0.1,
-                    height * 0.2,
-                    width * 0.1,
-                    height * 0.1,
-                  ),
+                      width * 0.05, height * 0.01, width * 0.05, height * 0.05),
                   child: Text("Create a new post for everyone to see",
                       style: TextStyle(fontFamily: 'Almendra', fontSize: 20)),
                 ),
@@ -92,6 +90,14 @@ class _CreateNewState extends State<CreateNew> {
                   width: width * 0.31,
                   child: ElevatedButton.icon(
                     onPressed: () {
+                      FirebaseFirestore.instance
+                          .collection('Feed')
+                          .doc(user)
+                          .update({
+                        'Uid': user,
+                        'Title': title.toString(),
+                        'Body': body.toString()
+                      });
                       // Navigator.push(
                       //     context,
                       //     PageRouteBuilder(

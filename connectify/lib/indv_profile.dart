@@ -1365,7 +1365,7 @@ class _CreatorProfileState extends State<CreatorProfile> {
                         FirebaseFirestore.instance
                             .collection('Users')
                             .doc(user)
-                            .set({
+                            .update({
                           'name': name.toString(),
                           'address': address.toString()
                         });

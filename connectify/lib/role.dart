@@ -159,7 +159,7 @@ class _RoleState extends State<Role> {
                                         FirebaseFirestore.instance
                                             .collection('Users')
                                             .doc(user)
-                                            .set({'role': "Creator"});
+                                            .update({'role': "Creator"});
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
