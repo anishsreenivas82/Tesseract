@@ -2,6 +2,9 @@ import 'package:connectify/my_feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+final name = TextEditingController();
+final address = TextEditingController();
+
 class CorpProfile extends StatefulWidget {
   const CorpProfile({Key? key}) : super(key: key);
 
@@ -1286,7 +1289,8 @@ class _CorpProfileState extends State<CorpProfile> {
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                    controller: name,
+                    decoration: InputDecoration(
                     labelText: 'Name of the firm',
                     fillColor: Colors.white,
                     icon: Icon(Icons.person),
@@ -1305,6 +1309,7 @@ class _CorpProfileState extends State<CorpProfile> {
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
+                    controller: address,
                       decoration: InputDecoration(
                     labelText: 'Address',
                     fillColor: Colors.white,
