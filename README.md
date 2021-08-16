@@ -10,3 +10,8 @@ Once the app is implemented on a larger scale, it would help reduce the requirem
 For this app, we used Flutter as the development platform, with Firebase for our database and we authenticated our user sign in using the *Sawo API*. For UI design, we worked on Figma. 
 ## Problems we faced
 The bulky and long drawn coding proccess of Authentication was reduced by introducing the Sawo API. Our tedious backend was managed by firebase. We were under a time crunch, but these technologies helped us.
+## Pictures
+![image](https://user-images.githubusercontent.com/77959565/129561613-e7bbe31d-466e-469f-834c-10f72e4340e9.png)
+![image](https://user-images.githubusercontent.com/77959565/129561653-d08eb578-601d-4681-b58c-124b0dce56ce.png)
+![image](https://user-images.githubusercontent.com/77959565/129561697-c1c655e3-4cf3-4b07-945c-a4179ee6d618.png)
+
