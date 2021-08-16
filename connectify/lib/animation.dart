@@ -72,7 +72,7 @@ class _AnimState extends State<Anim> {
                         width: width * 0.86,
                         height: height * 0.10,
                         child: Text(
-                          "Connect seamlessly with Volunteers,Donors and Not-for-profit organizations to continue making the world a better place!",
+                          "Connect seemlessly with creaters and business and continue giving the best customer  experience ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Almendra',

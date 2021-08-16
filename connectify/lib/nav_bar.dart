@@ -1,3 +1,4 @@
+import 'package:connectify/collaboration.dart';
 import 'package:flutter/material.dart';
 import 'package:connectify/my_feed.dart';
 
@@ -46,8 +47,8 @@ class _NavBarState extends State<NavBar> {
             title: Text('Your Feed'),
             leading: Icon(Icons.dashboard_outlined, color: Colors.black),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Feed()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Feed()));
             },
           ),
           ListTile(
@@ -57,16 +58,16 @@ class _NavBarState extends State<NavBar> {
               color: Colors.black,
             ),
             onTap: () {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => Collaborations()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Collab()));
             },
           ),
           ListTile(
             title: Text("Create a new post"),
             leading: Icon(Icons.create, color: Colors.black),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CreateNew()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreateNew()));
             },
           ),
           // ListTile(

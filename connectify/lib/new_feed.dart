@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectify/my_feed.dart';
 import 'package:connectify/nav_bar.dart';
 import 'package:connectify/sign_in.dart';
 import 'package:flutter/material.dart';
@@ -90,21 +91,16 @@ class _CreateNewState extends State<CreateNew> {
                   width: width * 0.31,
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      FirebaseFirestore.instance
-                          .collection('Feed')
-                          .doc(user)
-                          .update({
-                        'Uid': user,
+                      FirebaseFirestore.instance.collection('Feed').add({
+                        'Name': user,
                         'Title': title.toString(),
                         'Body': body.toString()
                       });
-                      // Navigator.push(
-                      //     context,
-                      //     PageRouteBuilder(
-                      //         pageBuilder: (context, _, a) => Feed(),
-                      //         transitionDuration:
-                      //             Duration(milliseconds: 500)));
-                      // Navigator.of(context).push(_createRoute());
+                      Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              pageBuilder: (context, _, a) => Feed(),
+                              transitionDuration: Duration(milliseconds: 500)));
                     },
                     icon: Icon(
                       Icons.next_plan,
