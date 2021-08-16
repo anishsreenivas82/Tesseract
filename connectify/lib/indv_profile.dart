@@ -1,5 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectify/my_feed.dart';
+import 'package:connectify/sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+final name = TextEditingController();
+final address = TextEditingController();
 
 class CreatorProfile extends StatefulWidget {
   const CreatorProfile({Key? key}) : super(key: key);
@@ -1195,115 +1201,138 @@ class _CreatorProfileState extends State<CreatorProfile> {
   String value = items.first;
   @override
   Widget build(BuildContext context) {
+    Route _createRoute() {
+      return PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 1500),
+        pageBuilder: (context, animation, secondaryAnimation) => const Feed(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+          return SlideTransition(
+            position: animation.drive(tween),
+            child: child,
+          );
+        },
+      );
+    }
+
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: Color(0xFFEFBE90),
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(height * 0.26),
-          child: AppBar(
-              backgroundColor: Color(0xfff7f4b4),
-              centerTitle: true,
-              flexibleSpace: Container(
-                  height: height * 0.26,
-                  width: width,
-                  color: Color(0xfff7f4b4),
-                  child: Center(
-                      child: Column(children: [
-                    SizedBox(
-                      height: height * 0.09,
-                    ),
-                    Text(
-                      "Connectify",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Satisfy',
-                        color: Color(0xff171f28),
-                        fontSize: 30,
+      child: Scaffold(
+        backgroundColor: Color(0xFFEFBE90),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(height * 0.26),
+            child: AppBar(
+                backgroundColor: Color(0xfff7f4b4),
+                centerTitle: true,
+                flexibleSpace: Container(
+                    height: height * 0.26,
+                    width: width,
+                    color: Color(0xfff7f4b4),
+                    child: Center(
+                        child: Column(children: [
+                      SizedBox(
+                        height: height * 0.09,
                       ),
-                    ),
-                    SizedBox(height: height * 0.01),
-                    Text(
-                      "Individual Donors",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontFamily: "Almendra",
-                        fontWeight: FontWeight.w700,
+                      Text(
+                        "Connectify",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Satisfy',
+                          color: Color(0xff171f28),
+                          fontSize: 30,
+                        ),
                       ),
+                      SizedBox(height: height * 0.01),
+                      Text(
+                        "Corporate Donors",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 40,
+                          fontFamily: "Almendra",
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ]))))),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Container(
+                  width: width * 0.34,
+                  height: height * 0.18,
+                  child: FloatingActionButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.add_a_photo,
+                      color: Colors.black,
                     ),
-                  ]))))),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Container(
-                width: width * 0.34,
-                height: height * 0.18,
-                child: FloatingActionButton(
-                  onPressed: () {},
-                  child: Icon(
-                    Icons.add_a_photo,
-                    color: Colors.black,
+                    backgroundColor: Color(0xfff7f4b4),
                   ),
-                  backgroundColor: Color(0xfff7f4b4),
-                ),
-                // child:
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
+                  // child:
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1,
+                    ),
+                    color: Color(0xfff7f4b4),
                   ),
-                  color: Color(0xfff7f4b4),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * 0.05, height * 0.05, width * 0.05, 0),
-                child: TextFormField(
-                    decoration: InputDecoration(
-                  labelText: 'Name ',
-                  fillColor: Colors.white,
-                  icon: Icon(Icons.person),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.amber,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(20)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.brown, width: 2)),
-                )),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * 0.05, height * 0.05, width * 0.05, 0),
-                child: TextFormField(
-                    decoration: InputDecoration(
-                  labelText: 'Address',
-                  fillColor: Colors.white,
-                  icon: Icon(Icons.notes),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.amber,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(20)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.brown, width: 2)),
-                )),
-              ),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Center(
-                child: Flexible(
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      width * 0.05, height * 0.05, width * 0.05, 0),
+                  child: TextFormField(
+                      controller: name,
+                      decoration: InputDecoration(
+                        labelText: 'Name of the firm',
+                        fillColor: Colors.white,
+                        icon: Icon(Icons.person),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide:
+                                BorderSide(color: Colors.brown, width: 2)),
+                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      width * 0.05, height * 0.05, width * 0.05, 0),
+                  child: TextFormField(
+                      controller: address,
+                      decoration: InputDecoration(
+                        labelText: 'Address',
+                        fillColor: Colors.white,
+                        icon: Icon(Icons.notes),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide:
+                                BorderSide(color: Colors.brown, width: 2)),
+                      )),
+                ),
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                Center(
                   child: DropdownButton<String>(
                     iconEnabledColor: Colors.brown,
                     dropdownColor: Color(0xfff7f4b4),
@@ -1325,21 +1354,28 @@ class _CreatorProfileState extends State<CreatorProfile> {
                     }),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Center(
-                child: Container(
-                  width: width * 0.31,
-                  child: ElevatedButton.icon(
+                SizedBox(
+                  height: height * 0.05,
+                ),
+                Center(
+                  child: Container(
+                    width: width * 0.31,
+                    child: ElevatedButton.icon(
                       onPressed: () {
-                        //  Navigator.push(
-                        //     context,
-                        //     PageRouteBuilder(
-
-                        //         pageBuilder: (context,_,a) => SignIn(),transitionDuration: Duration(milliseconds: 500)));
-                        // Navigator.of(context).push(_createRoute());
+                        FirebaseFirestore.instance
+                            .collection('Users')
+                            .doc(user)
+                            .set({
+                          'name': name.toString(),
+                          'address': address.toString()
+                        });
+                        Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                                pageBuilder: (context, _, a) => Feed(),
+                                transitionDuration:
+                                    Duration(milliseconds: 500)));
+                        Navigator.of(context).push(_createRoute());
                       },
                       icon: Icon(
                         Icons.next_plan,
@@ -1355,13 +1391,15 @@ class _CreatorProfileState extends State<CreatorProfile> {
                           color: Color(0xffd4fff7),
                           fontSize: 15,
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sawo/sawo.dart';
 
+String user = "";
 bool _ishidden = true;
 Sawo sawo = new Sawo(
   apiKey: '0cd131c0-de41-48f7-8f3d-0e5091c81aac',
@@ -30,7 +31,7 @@ class _SignInState extends State<SignIn> {
   var config = {};
   String _list = "", uid = "";
   // user payload
-  String user = "";
+
   void payloadCallback(context, payload) {
     if (payload == null || (payload is String && payload.length == 0)) {
       payload = "Login Failed :(";
@@ -83,7 +84,7 @@ class _SignInState extends State<SignIn> {
               context,
               PageRouteBuilder(
                 pageBuilder: (context, _, a) =>
-                    Role(), //Put nav to direct page here with if condition
+                    Feed(), //Put nav to direct page here with if condition
               ));
         } else {
           FirebaseFirestore.instance

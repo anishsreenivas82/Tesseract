@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectify/my_feed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:connectify/sign_in.dart';
 
 final name = TextEditingController();
 final address = TextEditingController();
@@ -1289,41 +1291,43 @@ class _CorpProfileState extends State<CorpProfile> {
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
-                    controller: name,
-                    decoration: InputDecoration(
-                    labelText: 'Name of the firm',
-                    fillColor: Colors.white,
-                    icon: Icon(Icons.person),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.amber,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.brown, width: 2)),
-                  )),
+                      controller: name,
+                      decoration: InputDecoration(
+                        labelText: 'Name of the firm',
+                        fillColor: Colors.white,
+                        icon: Icon(Icons.person),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide:
+                                BorderSide(color: Colors.brown, width: 2)),
+                      )),
                 ),
                 Padding(
                   padding: EdgeInsets.fromLTRB(
                       width * 0.05, height * 0.05, width * 0.05, 0),
                   child: TextFormField(
-                    controller: address,
+                      controller: address,
                       decoration: InputDecoration(
-                    labelText: 'Address',
-                    fillColor: Colors.white,
-                    icon: Icon(Icons.notes),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.amber,
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.brown, width: 2)),
-                  )),
+                        labelText: 'Address',
+                        fillColor: Colors.white,
+                        icon: Icon(Icons.notes),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide:
+                                BorderSide(color: Colors.brown, width: 2)),
+                      )),
                 ),
                 SizedBox(
                   height: height * 0.05,
@@ -1358,6 +1362,13 @@ class _CorpProfileState extends State<CorpProfile> {
                     width: width * 0.31,
                     child: ElevatedButton.icon(
                       onPressed: () {
+                        FirebaseFirestore.instance
+                            .collection('Users')
+                            .doc(user)
+                            .set({
+                          'name': name.toString(),
+                          'address': address.toString()
+                        });
                         Navigator.push(
                             context,
                             PageRouteBuilder(

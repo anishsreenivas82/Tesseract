@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectify/corp_profile.dart';
 import 'package:connectify/indv_profile.dart';
+import 'package:connectify/sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -101,6 +103,10 @@ class _RoleState extends State<Role> {
                                   SizedBox(height: height * 0.30),
                                   ElevatedButton.icon(
                                     onPressed: () {
+                                      FirebaseFirestore.instance
+                                          .collection('Users')
+                                          .doc(user)
+                                          .update({'role': "Business"});
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -150,6 +156,10 @@ class _RoleState extends State<Role> {
                                     SizedBox(height: height * 0.30),
                                     ElevatedButton.icon(
                                       onPressed: () {
+                                        FirebaseFirestore.instance
+                                            .collection('Users')
+                                            .doc(user)
+                                            .set({'role': "Creator"});
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
